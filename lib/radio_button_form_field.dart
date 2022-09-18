@@ -41,13 +41,16 @@ class RadioButtonFormField extends FormField {
       FormFieldSetter? onSaved,
       FormFieldValidator? validator,
       bool autoValidate = false,
-      this.titleStyle})
+      this.titleStyle,
+      this.physics
+      })
       : assert(autoValidate != null),
         super(
             validator: validator,
             onSaved: onSaved,
             builder: (FormFieldState state) {
               return ListView.builder(
+                physics: physics,
                 padding: padding,
                 shrinkWrap: true,
                 itemCount: data.length,
@@ -148,4 +151,7 @@ class RadioButtonFormField extends FormField {
 
   /// The padding of the widgets.
   final EdgeInsetsGeometry? padding;
+
+  /// Physics for the [ListView].
+  final ScrollPhysics? physics;
 }
